@@ -1,0 +1,94 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', 'DM Sans', sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  transition: background .4s, color .4s;
+  overflow-x: hidden;
+}
+
+/* ── SCROLLBAR ──────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(120, 113, 108, 0.35);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(120, 113, 108, 0.6);
+}
+
+/* Smooth selection color */
+::selection {
+  background: rgba(37, 99, 235, 0.15);
+  color: var(--ink);
+}
+
+::-moz-selection {
+  background: rgba(37, 99, 235, 0.15);
+  color: var(--ink);
+}
+
+/* Focus ring for interactive elements */
+*:focus-visible {
+  outline: 2px solid var(--accent, #2563eb);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ── BACKGROUND TREATMENT (Builder only) ──────────────────────────── */
+/* Static, high-end background without generic AI floating animations or neon grids */
+.app::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 10% 10%, rgba(0, 212, 255, 0.02) 0%, transparent 40%),
+    radial-gradient(circle at 90% 90%, rgba(123, 47, 247, 0.02) 0%, transparent 40%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.app:not(.dark)::before {
+  background: none; /* Solid warm linen editorial background */
+}
+
+.app > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── PRINT MEDIA QUERY ─────────────────────────────────────────────────── */
+@media print {
+  .topbar,
+  .sidebar,
+  .preview-controls {
+    display: none !important;
+  }
+
+  .preview-area {
+    padding: 0;
+  }
+
+  .r-entry,
+  .r-section-title,
+  .r-header {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+}
