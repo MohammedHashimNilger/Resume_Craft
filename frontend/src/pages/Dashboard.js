@@ -85,7 +85,7 @@ export function Dashboard({ onNew, onOpen }) {
         {!loading && resumes.length === 0 && (
           <div className="dash-welcome-section">
             <div className="welcome-banner">
-              <h3>Design Your Professional Future 🚀</h3>
+              <h3>Design Your Professional Future </h3>
               <p>Select a layout below to launch the editor and build your resume in minutes.</p>
             </div>
             
